@@ -8,9 +8,8 @@
 #include <sstream>
 #include <regex>
 
-std::string cleanRegex(const std::string& text)
+std::string cleanRegex(const std::string& text, const std::string& reg)
 {
-	std::string reg = "[^A-Za-zР-пр-џ]";
 	std::string replacement = " ";
 	std::string result = boost::replace_all_regex_copy(text, boost::regex(reg), replacement);
 	return result;
@@ -28,7 +27,8 @@ std::string lowerCase(const std::string& text)
 
 std::unordered_map<std::string, int> indexer(const std::string& text)
 {
-	std::string processed_text = lowerCase(cleanRegex(text));
+	std::string reg = "[^A-Za-zР-пр-џ_]";
+	std::string processed_text = lowerCase(cleanRegex(text, reg));
 
 	std::unordered_map<std::string, int> result;
 	

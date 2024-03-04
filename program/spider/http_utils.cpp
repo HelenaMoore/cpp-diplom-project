@@ -187,7 +187,7 @@ Link prepareLink(const std::string& url)
 
 std::vector<Link> assembleLinks(const std::string& html, const Link& link)
 {
-	static const std::regex reg("<a href=\"(.*?)\">", std::regex_constants::icase);
+	static const std::regex reg("<a href=\"(.*?)\"", std::regex_constants::icase);
 	std::vector<std::string> urls;
 	std::copy(std::sregex_token_iterator(html.begin(), html.end(), reg, 1), std::sregex_token_iterator(), std::back_inserter(urls));
 
